@@ -8,7 +8,6 @@ function solution(n) {
     
     return answer;
 }
-}
 ```
 
 ```Javascript

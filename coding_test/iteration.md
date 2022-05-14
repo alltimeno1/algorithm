@@ -1,4 +1,36 @@
 ```JavaScript
+// https://programmers.co.kr/learn/courses/30/lessons/12916
+
+// 반복문으로 각 문자 개수 비교
+
+function solution(s) {
+    let p_count = 0;
+    let y_count = 0;
+    
+    const capital = s.toUpperCase()
+
+    for (let i = 0; i < s.length; i++) {
+        if (capital[i] === "P") {
+            p_count += 1;
+        } else if (capital[i] === "Y") {
+            y_count += 1;
+        }
+    }
+    
+    const answer = p_count === y_count
+
+    return answer;
+}
+
+// split 활용
+
+function solution(s) {
+     
+    return s.toUpperCase().split("P").length === s.toUpperCase().split("Y").length;
+}
+```
+
+```JavaScript
 // https://programmers.co.kr/learn/courses/30/lessons/42576
 
 // 두 배열 정렬 후 차례대로 한개씩 비교

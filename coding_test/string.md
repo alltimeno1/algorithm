@@ -1,4 +1,31 @@
 ```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/12933
+
+// Number -> String -> Array
+
+function solution(n) {
+    const answer = Number(n.toString().split('').sort((a, b) => b - a).join(''));
+    
+    return answer;
+}
+}
+```
+
+```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/12932
+
+// Number -> String -> Array
+
+function solution(n) {
+    let answer = [];
+          
+    n.toString().split('').forEach(e => answer.unshift(Number(e)))
+    
+    return answer;
+}
+```
+
+```Javascript
 // https://programmers.co.kr/learn/courses/30/lessons/12948
 
 // 뒤에 4자리 제외 길이만큼 * 추가 + 뒤에 4자리
@@ -6,6 +33,23 @@
 function solution(phone_number) {
     const answer = '*'.repeat(phone_number.length - 4) + phone_number.slice(-4);
     
+    return answer;
+}
+```
+
+```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/12931
+
+// 문자열로 변환 후 더하기
+
+function solution(n) {
+    let answer = 0;
+    let str = n.toString()
+    
+    for (let i = 0; i < str.length; i++) {
+        answer += Number(str[i])
+    }
+
     return answer;
 }
 ```

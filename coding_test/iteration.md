@@ -1,4 +1,22 @@
 ```JavaScript
+// https://programmers.co.kr/learn/courses/30/lessons/42576
+
+// 두 배열 정렬 후 차례대로 한개씩 비교
+
+function solution(participant, completion) {
+    participant.sort();
+    completion.sort();
+    
+    for (let i = 0; i < participant.length; i++) {
+        if (participant[i] !== completion[i]) {
+            return participant[i];
+        }
+         
+    }
+}
+```
+
+```JavaScript
 // https://programmers.co.kr/learn/courses/30/lessons/12950
 
 // 2중 반복문

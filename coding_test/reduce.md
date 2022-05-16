@@ -1,4 +1,18 @@
 ```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/12947
+
+// 숫자 -> 문자열 -> 배열 -> 합계
+
+function solution(x) {
+    const sum = String(x).split('').reduce((sum, val) => sum + Number(val), 0)
+    
+    const answer = x % sum === 0
+        
+    return answer;
+}
+```
+
+```Javascript
 // https://programmers.co.kr/learn/courses/30/lessons/86051
 
 // reduce : array.reduce(callback, initialValue)

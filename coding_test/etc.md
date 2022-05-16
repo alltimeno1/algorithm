@@ -1,4 +1,44 @@
 ```Javascript
+// 각 요소가 이전값(previousVal)과 다르면 answer 배열에 넣음
+
+function solution(arr) {
+    let answer = [];
+    let previousVal;
+    
+    arr.forEach(e => {
+        if (e !== previousVal) {
+            answer.push(e);
+            previousVal = e
+        }
+    })
+    
+    return answer;
+}
+```
+
+```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/86491
+
+// 명함에서 큰 길이 & 작은 길이 중 각각 가장 큰 값 곱해줌
+
+function solution(sizes) {
+    let wallet = [0, 0]
+    
+    sizes.forEach(e => {
+        const big = e[0] > e[1] ? e[0] : e[1]
+        const small = e[0] > e[1] ? e[1] : e[0]
+        
+        wallet[0] = big > wallet[0] ? big : wallet[0]
+        wallet[1] = small > wallet[1] ? small : wallet[1]
+    })
+    
+    const answer = wallet[0] * wallet[1]
+    
+    return answer;
+}
+```
+
+```Javascript
 // https://programmers.co.kr/learn/courses/30/lessons/12934
 
 // parseInt

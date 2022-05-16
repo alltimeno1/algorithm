@@ -1,4 +1,42 @@
 ```JavaScript
+// https://programmers.co.kr/learn/courses/30/lessons/12935
+
+// 반복문으로 가장 작은 값 구한 후 제거
+
+function solution(arr) {
+    if (arr.length <= 1) return [-1]
+    
+    let minVal = arr[0]
+    let minIdx = 0
+    
+    arr.forEach((val, idx) => {
+        if (val < minVal) {
+            minVal = val
+            minIdx = idx
+        }
+    })
+    arr.splice(minIdx, 1)
+    
+    return arr
+}
+
+
+// Math.min, indexOf
+
+function solution(arr) {
+    if (arr.length <= 1) return [-1]
+    
+    const minVal = Math.min(...arr)
+    
+    const minIdx = arr.indexOf(minVal)
+    
+    arr.splice(minIdx, 1)
+    
+    return arr
+}
+```
+
+```JavaScript
 // https://programmers.co.kr/learn/courses/30/lessons/12916
 
 // 반복문으로 각 문자 개수 비교

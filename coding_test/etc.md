@@ -1,4 +1,29 @@
 ```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/42840
+
+// filter, map
+
+function solution(answers) {
+    const one = [1, 2, 3, 4, 5]
+    const two = [2, 1, 2, 3, 2, 4, 2, 5]
+    const three = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
+    const score = []
+    
+    for (let std of [one, two, three]) {
+        score.push(answers.filter((e, idx) => e === std[idx % std.length]).length);
+    }
+    
+    const result = score
+        .map((e, idx) => e === Math.max(...score) ? idx + 1 : 0)
+        .filter(e => e)
+    
+    
+    return result;
+}
+```
+
+
+```Javascript
 // 각 요소가 이전값(previousVal)과 다르면 answer 배열에 넣음
 
 function solution(arr) {

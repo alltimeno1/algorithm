@@ -1,3 +1,62 @@
+```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/77484
+
+// filter
+
+function solution(lottos, win_nums) {
+    const min = lottos.filter(e => e && win_nums.includes(e)).length
+    const max = min + lottos.filter(e => e === 0).length
+    
+    const minRank = min < 2 ? 6 : 7 - min
+    const maxRank = max < 2 ? 6 : 7 - max
+    
+    const answer = [maxRank, minRank]
+    
+    return answer;
+}
+
+// for문 
+
+function solution(lottos, win_nums) {
+    let sameNums = 0
+    let zeros = 0
+    
+    for (num of lottos) {
+        if (!num) {
+            zeros += 1
+        } else if (num && win_nums.includes(num)) {
+            sameNums += 1
+        }
+    }
+    
+    const minRank = sameNums >= 2 ? 7 - sameNums : 6
+    const maxRank = sameNums + zeros >= 2 ? 7 - sameNums - zeros : 6
+    
+    const answer = [maxRank, minRank];
+    return answer;
+}
+```
+
+```JavaScript
+// https://programmers.co.kr/learn/courses/30/lessons/68644
+
+// 2중 반복문 n(n - 1), Set 객체로 중복값 제거, sort로 정렬
+
+function solution(numbers) {
+    let answer = [];
+    
+    for (let i = 0; i < numbers.length - 1; i++) {
+        for (let n = i + 1; n < numbers.length; n++) {
+            answer.push(numbers[i] + numbers[n])
+        }
+    }
+    
+    answer = [...new Set(answer)].sort((a, b) => a - b)
+                
+    return answer;
+}
+```
+
 ```JavaScript
 // https://programmers.co.kr/learn/courses/30/lessons/12935
 

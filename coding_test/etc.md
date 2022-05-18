@@ -64,6 +64,22 @@ function solution(sizes) {
 ```
 
 ```Javascript
+// Date
+
+function hanghae99(month, day) {
+  let firstDay = new Date(`2022-${month}-${day} 09:00:00`)
+
+  firstDay.setDate(firstDay.getDate() + 98)
+
+  console.log(`${firstDay.getMonth() + 1}월 ${firstDay.getDate()}일`)
+}
+
+hanghae99(11, 27)
+hanghae99(6, 22)
+hanghae99(1, 18)
+```
+
+```Javascript
 // https://programmers.co.kr/learn/courses/30/lessons/12934
 
 // parseInt

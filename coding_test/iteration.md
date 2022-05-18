@@ -1,4 +1,33 @@
 ```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/12977
+
+// 3중 for문으로 모든 경우의 수 배열 구함 -> 2 ~ 루트 근사값으로 소수 필터링
+
+function solution(nums) {
+    let sumArr = [];
+    
+    for (let i = 0; i < nums.length - 2; i++) {
+        for (let n = i + 1; n < nums.length - 1; n++) {
+            for (let m = n + 1; m < nums.length; m++) {
+                sumArr.push(nums[i] + nums[n] + nums[m]);
+            }
+        }
+    }
+        
+    const answer = sumArr
+        .filter(e => {
+            for (let i = 2; i <= Math.floor(Math.sqrt(e)); i++) {
+                if (e % i === 0) return false
+            }
+            return true
+        })
+        .length;
+    
+    return answer;
+}
+```
+
+```Javascript
 // https://programmers.co.kr/learn/courses/30/lessons/77484
 
 // filter

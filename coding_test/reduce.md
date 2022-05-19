@@ -1,4 +1,23 @@
 ```Javascript
+// 주어진 배열을 합 혹은 곱셈(순차 진행)으로 최대값 구하기
+
+// 총계와 현재값이 1보다 크면 곱셈, 아니면 덧셈
+
+const input = [0, 3, 5, 6, 1, 2, 4]
+
+function findMaxPlusOrMultiply(array) {
+  const answer = array.reduce((pre, cur) => pre > 1 && cur > 1 ? pre * cur : pre + cur, 0)
+
+  return answer
+}
+
+const result = findMaxPlusOrMultiply(input)
+
+console.log(result)
+```
+
+
+```Javascript
 // https://programmers.co.kr/learn/courses/30/lessons/12947
 
 // 숫자 -> 문자열 -> 배열 -> 합계

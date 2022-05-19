@@ -1,4 +1,112 @@
 ```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/64061
+
+// findIndex로 뽑아야 될 인형 높이 찾기
+
+function solution(board, moves) {
+    let bucket = []
+    let answer = 0
+    
+    for (move of moves) {
+        const idx = board.findIndex(c => c[move - 1])
+        
+        if (idx === -1) continue
+        
+        const pickedToy = board[idx][move - 1]
+        
+        board[idx][move - 1] = 0
+        
+        if (bucket[bucket.length - 1] === pickedToy) {
+            answer += 2
+            bucket.pop()
+        } else {
+            bucket.push(pickedToy)
+        }
+    }
+    return answer;
+}
+```
+
+```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/67256#
+
+// 다양한 경우의 수를 if문으로 작성
+
+function solution(numbers, hand) {
+    const middleNum = [2, 5, 8, 11]
+    let left = 10
+    let right = 12
+    let leftDist
+    let rightDist
+    let result = ''
+    
+    for (num of numbers) {
+        if (!num) num = 11
+        
+        if (num % 3 === 1) {
+            result += 'L'
+            left = num
+        } else if (num % 3 === 0) {
+            result += 'R'
+            right = num
+        } else {
+            const numIdx = middleNum.indexOf(num)
+            
+            leftDist = Math.abs(numIdx - middleNum.indexOf(left + 2 - left % 3)) + 2 - left % 3
+            rightDist = Math.abs(numIdx - middleNum.indexOf(right - (right + 1) % 3)) + (right + 1) % 3
+            
+            if (leftDist > rightDist) {
+                right = num
+                result += 'R'
+            } else if (leftDist < rightDist) {
+                left = num
+                result += 'L'
+            } else {
+                if (hand === 'right') {
+                    result += 'R'
+                    right = num
+                } else {
+                    result += 'L'
+                    left = num
+                }
+            }            
+        }
+    }
+    
+    return result;
+}
+```
+
+```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/1845
+
+// 삼항연산자
+
+function solution(nums) {
+    const cat = new Set(nums).size
+    let len = nums.length / 2
+    
+    return cat > len ? len : cat
+}
+```
+
+```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/77884
+
+// 정수의 제곱값은 약수가 홀수, 나머지는 짝수
+
+function solution(left, right) {
+    let answer = 0;
+    
+    for (let i = left; i <= right; i++) {
+        answer += Number.isInteger(Math.sqrt(i)) ? -i : i;
+    }
+    
+    return answer;
+}
+```
+
+```Javascript
 // https://programmers.co.kr/learn/courses/30/lessons/42840
 
 // filter, map

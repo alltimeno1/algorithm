@@ -1,4 +1,43 @@
 ```Javascript
+// 연속된 숫자를 뒤집어서 최소 횟수로 모두 같은 숫자로 만들기
+
+// split과 filter로 최소 횟수 찾기
+
+const INPUT = '011110'
+
+function sameNumber(number) {
+  const one = number.split(0).filter(e => e).length
+  const zero = number.split(1).filter(e => e).length
+
+  return one > zero ? zero : one
+}
+
+const result = sameNumber(INPUT)
+
+console.log(result)
+```
+
+```Javascript
+// 1개만 있는 첫번째 문자 구하기
+
+// 각 문자로 split을 했을 때 1개만 들어있는 문자의 경우 배열의 길이가 2가 됨을 활용
+
+const INPUT = "abacabade"
+
+function findNotRepeatingCharacter(string) {
+  let dup = []
+  for (let i = 0; i < string.length; i++) {
+    if (string.split(string[i]).length === 2) return string[i]
+  }
+  return _
+}
+
+result = findNotRepeatingCharacter(INPUT)
+
+console.log(result)
+```
+
+```Javascript
 // https://programmers.co.kr/learn/courses/30/lessons/12926
 
 // ascii 코드로 변환 -> 25만큼 이동 -> 문자열로 변환

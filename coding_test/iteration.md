@@ -1,4 +1,163 @@
 ```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/17681
+
+// 10진법 -> 2진법 -> #
+
+function solution(n, arr1, arr2) {
+    let result = []
+        
+    arr1.forEach((e, i) => {
+        let blocks = ''
+        const binary1 = e.toString(2).padStart(n)
+        const binary2 = arr2[i].toString(2).padStart(n)
+        
+        for (let k = 0; k < n; k++) {
+            blocks += Number(binary1[k]) + Number(binary2[k]) ? '#' : ' '
+        }
+        
+        result.push(blocks)
+    })
+    
+    return result
+}
+
+// 10진법 -> 2진법 -> #
+
+function solution(n, arr1, arr2) {
+    let result = []
+    
+    arr1 = arr1.map(e => e.toString(2).padStart(n))
+    arr2 = arr2.map(e => e.toString(2).padStart(n))
+    
+    for (let i = 0; i < n; i++) {
+        let blocks = ''
+        
+        for (let k = 0; k < n; k++) {
+            blocks += Number(arr1[i][k]) + Number(arr2[i][k]) ? '#' : ' '
+        }
+        
+        result.push(blocks)
+    }
+    
+    return result
+}
+```
+
+```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/12921
+
+// for, every => 효율성 나쁨 
+
+function solution(n) {
+    let answer = [2];
+    
+    for (let i = 3; i <= n; i += 2) {      
+        const prime = answer.every(e => i % e);
+        
+        if (prime) answer.push(i);
+    }
+    
+    return answer.length;
+}
+
+// 에라토스테네스의 체 => 엄청 빠름
+
+function solution(n) {
+    const prime = []
+    
+    for (let i = 1; i < n; i++) {      
+        prime.push(true)
+    }
+    
+    for (let i = 2; i * 2 <= n; i++) {
+        if (prime[i - 2]) {
+            for (let m = 2; m * i <= n; m++) {
+                prime[i * m - 2] = false
+            }
+        }
+    }
+    
+    const result = prime.filter(e => e).length
+    
+    return result
+}
+```
+
+```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/42889
+
+// 실패율 : N번 개수 / N번 이상 개수, 스테이지 번호와 실패율을 2차원 배열로 구성
+
+function solution(N, stages) {
+    let rate = []
+    
+    for (let i = 1; i <= N; i++) {
+        rate.push([i, stages.filter(e => e === i).length / stages.filter(e => e >= i).length])
+    }
+    
+    const answer = rate.sort((a, b) => b[1] - a[1]).map(e => e[0])
+    
+    return answer;
+}
+```
+
+```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/42748
+
+// 배열을 길이만큼 자르고 정렬하고 나온 k번째 수로 배열을 반환
+
+function solution(array, commands) {
+    const answer = commands.map(e => array.slice(e[0] - 1, e[1]).sort((a, b) => a - b)[e[2] - 1])
+    
+    return answer;
+}
+```
+
+```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/12940
+
+// 반복문
+
+function solution(n, m) {
+    const [l, s] = n > m ? [n, m] : [m, n];
+    
+    for (let i = s; i > 0; i--) {
+        if (!(l % i || s % i)) {
+            return [i, l * s / i];
+        }
+    }
+}
+```
+
+```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/12928
+
+// 1부터 루트값까지 돌면서 약수 더하기
+
+function solution(n) {
+    let answer = 0;
+    
+    for (let i = 1; i <= Math.sqrt(n); i++) {
+        answer += n % i ? 0 : n === i ** 2 ? i : i + n / i
+    }
+    
+    return answer;
+}
+```
+
+```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/87389
+
+// 반복문으로 2부터 나머지가 1이 되는 값 탐색
+
+function solution(n) {
+    for (let i = 2; i < n; i++) {
+        if (n % i === 1) return i
+    }
+}
+```
+
+```Javascript
 // https://programmers.co.kr/learn/courses/30/lessons/12977
 
 // 3중 for문으로 모든 경우의 수 배열 구함 -> 2 ~ 루트 근사값으로 소수 필터링
@@ -83,6 +242,32 @@ function solution(numbers) {
     answer = [...new Set(answer)].sort((a, b) => a - b)
                 
     return answer;
+}
+```
+
+```JavaScript
+// https://programmers.co.kr/learn/courses/30/lessons/12982
+
+// 반복문
+
+function solution(d, budget) {
+    d.sort((a, b) => a - b);
+    
+    let answer = 0;
+    
+    for (let i = 0; i < d.length; i++) {
+        const sum = d[i] + answer;
+        
+        if (sum > budget) {
+            return i;
+        } else if (sum === budget) {
+            return i + 1;
+        } else {
+            if (i === d.length - 1) return i + 1
+            
+            answer = sum;
+        }
+    }
 }
 ```
 

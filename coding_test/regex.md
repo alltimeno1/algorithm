@@ -1,4 +1,35 @@
 ```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/17682
+
+// 정규식으로 점수, 보너스, 옵션 구분 후 계산
+
+function solution(dartResult) {
+    let answer = []
+    let shot
+    let arr = dartResult.match(/[0-9]{1,2}[SDT]{0,1}[*#]{0,1}/g)
+    
+    arr.forEach(e => {
+        const score = /[0-9]{1,2}/g.exec(e)[0]
+        const multi = /[SDT]/g.exec(e)[0]
+        const special = /[*#]/g.exec(e) || []
+        let shot = score ** (multi === 'S' ? 1 : multi === 'D' ? 2 : 3) 
+        
+        if (special[0] === '*') {
+            if (answer[0]) answer[answer.length-1] *= 2
+            shot *= 2
+        } else if (special[0] === '#') {
+            shot *= -1
+        }
+        
+        answer.push(shot)        
+    })
+    
+    return answer.reduce((a, b) => a + b, 0)
+}
+```
+
+```Javascript
+// https://programmers.co.kr/learn/courses/30/lessons/72410
 
 function solution(new_id) {
     new_id = new_id
